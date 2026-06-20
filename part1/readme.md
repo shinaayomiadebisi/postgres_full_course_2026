@@ -12,3 +12,12 @@ comments table
 
 non relational db -> doesn't organize data using connected tables.
 it uses documents, key value pairs
+
+data clear struc, relationships, transactions, joins,
+strong validation at db level
+
+banking app, e-commerce, CRM
+
+<!-- Use non-relational data when your data changes often -->
+
+non relational - data changes very often, doc independent, not much joins
