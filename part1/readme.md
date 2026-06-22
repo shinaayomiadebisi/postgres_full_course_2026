@@ -42,6 +42,8 @@ export PGPASSWORD="admin"
 
 psql -U postgres -d postgresql_part1
 
+psql -U postgres -d postgresql_part1 -f part1/02_first_schema.sql
+
 --
 To check database --> SELECT current_database();
 To check user --> SELECT current_user;
@@ -56,4 +58,9 @@ To confirm postgreSQL version --> SELECT version();
 \x : Toggle expanded display mode (useful for viewing wide tables).
 \? : View help documentation for all backslash commands.
 \h : View syntax help for specific SQL statements (e.g., \h ALTER TABLE).
-\q : Quit the psql interface and return to your main shell
+\q : Quit the psql interface and return to your main shell OR exit
+
+<!-- To check tables -->
+
+\dt basics.\*
+SELECT \* FROM basics.students;
