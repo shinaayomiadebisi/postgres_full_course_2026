@@ -30,4 +30,4 @@ SELECT * FROM basics.value_examples WHERE nickname IS NULL;
 
 -- write one query to find where nickname is empty string
 
-SELECT nickname FROM basics.value_examples WHERE nickname ? '';
+SELECT nickname FROM basics.value_examples WHERE nickname = '';
