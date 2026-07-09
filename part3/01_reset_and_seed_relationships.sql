@@ -10,7 +10,7 @@ DROP TABLE IF EXISTS tags;
 DROP TABLE IF EXISTS users;
 
 
-CREATE TABLE user (
+CREATE TABLE users (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
 
   name TEXT NOT NULL
@@ -19,7 +19,7 @@ CREATE TABLE user (
 CREATE TABLE posts (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
 
-  user_id UUID NOT NULL REFERENCE users(id),
+  user_id UUID NOT NULL REFERENCES users(id),
 
   title TEXT NOT NULL,
 
@@ -32,7 +32,7 @@ CREATE TABLE posts (
 CREATE TABLE comments (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
 
-  post_id UUID NOT NULL DEFAULT REFERENCES posts(id),
+  post_id UUID NOT NULL REFERENCES posts(id),
 
   body TEXT NOT NULL
 );
@@ -56,7 +56,7 @@ INSERT INTO users (name) VALUES
   ('Rahul');
 
 INSERT INTO posts(user_id, title, status, views)
-SELECT id, 'PostreSQL Joins Explained', 'Published', 100
+SELECT id, 'PostreSQL Joins Explained', 'published', 100
 FROM users
 WHERE name = 'Ananya';
 
@@ -66,6 +66,43 @@ FROM users
 WHERE name = 'Ananya';
 
 INSERT INTO posts(user_id, title, status, views)
-SELECT id, 'Backend APIs with PostreSQL', 'Published', 180
+SELECT id, 'Backend APIs with PostreSQL', 'published', 180
 FROM users
 WHERE name = 'Ananya';
+
+
+INSERT INTO comments (post_id, body)
+SELECT id, 'Very clear explanation.'
+FROM posts
+WHERE title = 'PostgreSQL Joins Explained';
+
+INSERT INTO comments (post_id, body)
+SELECT id, 'Please add more examples'
+FROM posts
+WHERE title = 'Backend APIs with PostgreSQL';
+
+
+INSERT INTO tags (name) VALUES
+  ('sql'),
+  ('backend');
+
+
+INSERT INTO post_tags (post_id, tag_id)
+SELECT p.id, t.id
+FROM posts p, tags t
+WHERE p.title = 'PostgreSQL Joins Explained'
+  AND t.name = 'sql';
+
+INSERT INTO post_tags (post_id, tag_id)
+SELECT p.id, t.id
+FROM posts p, tags t
+WHERE p.title = 'Indexes for Beginners'
+  AND t.name = 'sql';
+
+INSERT INTO post_tags (post_id, tag_id)
+SELECT p.id, t.id
+FROM posts p, tags t
+WHERE p.title = 'Backend APIs with PostgreSQL'
+  AND t.name = 'backend';
+
+SELECT 'Part 3 reduced database reset and sample data inserted successfully' AS message;
