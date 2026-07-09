@@ -55,18 +55,18 @@ INSERT INTO users (name) VALUES
   ('Ananya'),
   ('Rahul');
 
-INSERT INTO posts(user_id, title, status, views)
-SELECT id, 'PostreSQL Joins Explained', 'published', 100
+INSERT INTO posts (user_id, title, status, views)
+SELECT id, 'PostgreSQL Joins Explained', 'published', 100
 FROM users
 WHERE name = 'Ananya';
 
-INSERT INTO posts(user_id, title, status, views)
-SELECT id, 'Indexes for  Beginners', 'draft', 40
+INSERT INTO posts (user_id, title, status, views)
+SELECT id, 'Indexes for Beginners', 'draft', 40
 FROM users
 WHERE name = 'Ananya';
 
-INSERT INTO posts(user_id, title, status, views)
-SELECT id, 'Backend APIs with PostreSQL', 'published', 180
+INSERT INTO posts (user_id, title, status, views)
+SELECT id, 'Backend APIs with PostgreSQL', 'published', 180
 FROM users
 WHERE name = 'Ananya';
 
