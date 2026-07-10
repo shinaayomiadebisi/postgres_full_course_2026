@@ -68,7 +68,7 @@ WHERE name = 'Ananya';
 INSERT INTO posts (user_id, title, status, views)
 SELECT id, 'Backend APIs with PostgreSQL', 'published', 180
 FROM users
-WHERE name = 'Ananya';
+WHERE name = 'Rahul';
 
 
 INSERT INTO comments (post_id, body)
