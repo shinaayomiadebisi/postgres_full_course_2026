@@ -18,4 +18,4 @@ WHERE name ILIKE '%desk%';
 SELECT name, category, description
 FROM products
 WHERE name ILIKE '%chair%'
-  OR description ILIKE '&chair';
+  OR description ILIKE '%chair';
